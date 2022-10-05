@@ -8,20 +8,19 @@ android {
 
     defaultConfig {
         applicationId = "com.symbol.composehello"
-        minSdkc = 23
+        minSdk = 23
         targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            useSupportLibrary(true)
+            useSupportLibrary = true
         }
     }
 
     buildTypes {
         getByName("release") {
-            minifyEnabled(false)
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -37,10 +36,10 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose(true)
+        compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion(compose_version)
+        kotlinCompilerExtensionVersion ="1.2.1"
     }
     packagingOptions {
         resources {
@@ -50,12 +49,12 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.compose.ui:ui:11")
-    implementation("androidx.compose.material3:material3:1.0.0-alpha01")
+    implementation("androidx.compose.material3:material3:1.0.0-beta03")
     implementation("androidx.compose.ui:ui-tooling-preview:123")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.1")
-    debugImplementation("androidx.compose.ui:ui-tooling:13")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:31")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.activity:activity-compose:1.6.0")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.2.1")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.2.1")
 }

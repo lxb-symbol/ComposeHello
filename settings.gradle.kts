@@ -1,4 +1,3 @@
-
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
@@ -24,10 +23,12 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from(files("${rootDir.path}/.config/dependencies-common.toml"))
+            from(files("${rootDir.path}/dependencies-common.toml"))
         }
     }
 }
 rootProject.name = "ComposeHello"
 include(":app")
 include(":mylibrary")
+include(":widget")
+
