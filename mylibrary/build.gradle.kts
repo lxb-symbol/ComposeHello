@@ -4,13 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 23
-        targetSdk = 32
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -33,10 +32,11 @@ android {
 }
 
 dependencies {
+
     implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.compose.ui:ui-tooling:1.2.1")
+    implementation("androidx.compose.material3:material3:1.0.0-beta03")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("com.google.android.material:material:1.6.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
 }
