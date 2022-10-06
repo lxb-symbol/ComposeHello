@@ -17,7 +17,7 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Surface
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -437,10 +437,12 @@ fun MainBottomNav(state: MutableState<BottomNavType>) {
             selected = state.value == BottomNavType.TYPE_HOME,
             onClick = { state.value = BottomNavType.TYPE_HOME },
             icon = {
-
+                Icon(imageVector = Icons.Filled.Home, contentDescription = "主页")
             },
             label = {
                 Text(
+                    modifier = Modifier.padding(top = 4.dp),
+
                     text = "主页",
                     fontSize = 12.sp,
                     color = if (state.value == BottomNavType.TYPE_HOME) Color.Red else Color.Black
@@ -450,10 +452,13 @@ fun MainBottomNav(state: MutableState<BottomNavType>) {
         BottomNavigationItem(selected = state.value == BottomNavType.TYPE_MESSAGE_TYPE,
             onClick = { state.value = BottomNavType.TYPE_MESSAGE_TYPE },
             icon = {
+                Icon(imageVector = Icons.Filled.Message, contentDescription = "消息")
 
             },
             label = {
                 Text(
+                    modifier = Modifier.padding(top = 4.dp),
+
                     text = "消息",
                     fontSize = 12.sp,
                     color = if (state.value == BottomNavType.TYPE_MESSAGE_TYPE) Color.Red else Color.Black
@@ -462,9 +467,13 @@ fun MainBottomNav(state: MutableState<BottomNavType>) {
         )
         BottomNavigationItem(selected = state.value == BottomNavType.TYPE_NEWS,
             onClick = { state.value = BottomNavType.TYPE_NEWS },
-            icon = {},
+            icon = {
+                Icon(imageVector = Icons.Filled.Newspaper, contentDescription = "新闻")
+            },
             label = {
                 Text(
+                    modifier = Modifier.padding(top = 4.dp),
+
                     text = "新闻",
                     fontSize = 12.sp,
                     color = if (state.value == BottomNavType.TYPE_NEWS) Color.Red else Color.Black
@@ -474,9 +483,12 @@ fun MainBottomNav(state: MutableState<BottomNavType>) {
         BottomNavigationItem(
             selected = state.value == BottomNavType.TYPE_MINE,
             onClick = { state.value = BottomNavType.TYPE_MINE },
-            icon = {},
+            icon = {
+                Icon(imageVector = Icons.Filled.NearMe, contentDescription = "我的")
+            },
             label = {
                 Text(
+                    modifier = Modifier.padding(top = 4.dp),
                     text = "我的",
                     fontSize = 12.sp,
                     color = if (state.value == BottomNavType.TYPE_MINE) Color.Red else Color.Black
