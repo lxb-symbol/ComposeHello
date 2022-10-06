@@ -62,4 +62,5 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.2.1")
     implementation("androidx.compose.runtime:runtime-rxjava2:1.2.1")
     implementation(project(":widget"))
+    implementation("io.coil-kt:coil-compose:2.2.2")
 }
