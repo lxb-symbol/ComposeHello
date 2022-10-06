@@ -7,7 +7,7 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId =libs.versions.applicationId.get()
+        applicationId = libs.versions.applicationId.get()
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = libs.versions.versionCode.get().toInt()
@@ -61,5 +61,5 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.2.1")
     implementation("androidx.compose.runtime:runtime-livedata:1.2.1")
     implementation("androidx.compose.runtime:runtime-rxjava2:1.2.1")
-
+    implementation(project(":widget"))
 }
