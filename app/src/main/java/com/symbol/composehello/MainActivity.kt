@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.symbol.composehello.ui.*
 import com.symbol.composehello.ui.theme.ComposeHelloTheme
-import com.symbol.widget.*
+import com.symbol.widget.BottomNavType
 
 /**
  * 主页
@@ -46,7 +46,6 @@ fun MainHomeScreen() {
         }
     }
 }
-
 
 @Composable
 fun ContentArea(type: BottomNavType, modifier: Modifier) {

@@ -1,22 +1,29 @@
 package com.symbol.composehello.ui
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.symbol.composehello.R
@@ -24,9 +31,10 @@ import com.symbol.composehello.R
 /**
  * 消息界面
  */
-@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalAnimationApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun MessageScreen() {
+    val context = LocalContext.current
 
     Column(modifier = Modifier.padding(16.dp)) {
 
@@ -72,7 +80,91 @@ fun MessageScreen() {
 
         LikeHeart()
 
-        androidx.compose.material.MaterialTheme
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(color = Color.Cyan, shape = RoundedCornerShape(4.dp))
+                .combinedClickable(
+                    onClick = {
+                        Toast
+                            .makeText(context, "onclick", Toast.LENGTH_LONG)
+                            .show()
+                    },
+                    onLongClick = {
+                        Toast
+                            .makeText(context, "LongClick", Toast.LENGTH_LONG)
+                            .show()
+                    },
+                    onDoubleClick = {
+                        Toast
+                            .makeText(context, "doubleClick", Toast.LENGTH_LONG)
+                            .show()
+                    }),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = "Box")
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        Box(
+            modifier = Modifier
+                .size(60.dp)
+                .background(color = Color.Green)
+                .pointerInput(Unit) {
+                    detectTapGestures(
+                        onDoubleTap = {
+                            Toast
+                                .makeText(context, "DoubleTap", Toast.LENGTH_SHORT)
+                                .show()
+                        },
+                        onLongPress = {
+                            Toast
+                                .makeText(context, "LongPress", Toast.LENGTH_SHORT)
+                                .show()
+                        },
+                        onPress = {
+                            Toast
+                                .makeText(context, "press", Toast.LENGTH_SHORT)
+                                .show()
+                        },
+                        onTap = {
+                            Toast
+                                .makeText(context, "onTap", Toast.LENGTH_SHORT)
+                                .show()
+                        })
+                }
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        var ofx by remember { mutableStateOf(0.dp) }
+        var ofy by remember { mutableStateOf(0.dp) }
+
+
+
+        Box(
+            modifier = Modifier
+                .size(200.dp)
+                .background(color = Color.Magenta)
+        ) {
+            Box(modifier = Modifier
+                .size(40.dp)
+                .offset {
+                    IntOffset(ofx.roundToPx(), ofy.roundToPx())
+                }
+                .pointerInput(Unit) {
+                    detectDragGestures { change, dragAmount ->
+
+                        change.consume()
+                        ofx += dragAmount.x.toDp()
+                        ofy += dragAmount.y.toDp()
+                    }
+                }
+                .background(color = Color.LightGray)
+            )
+        }
+
 
     }
 
