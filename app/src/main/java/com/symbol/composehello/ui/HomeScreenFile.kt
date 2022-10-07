@@ -2,23 +2,21 @@ package com.symbol.composehello.ui
 
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.*
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.TextField
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.*
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,12 +44,13 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.symbol.composehello.R
+import kotlinx.coroutines.launch
 
 
 /**
  * 主页
  */
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreen() {
     val context = LocalContext.current
@@ -409,10 +408,46 @@ fun HomeScreen() {
             }
         }
 
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(12.dp)
+                .background(color = Color.LightGray)
+        )
 
         val bottomState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
         val bottomScope = rememberCoroutineScope()
-        TODO("待完善")
+
+        ModalBottomSheetLayout(
+            sheetState = bottomState,
+            sheetBackgroundColor = Color.White,
+            sheetElevation = 4.dp,
+            scrimColor = Color.Gray,
+            sheetShape = RoundedCornerShape(4.dp),
+            sheetContentColor = Color.Green,
+            sheetContent = {
+                Column {
+                    Text(text = "第一列")
+                    Text(text = "第二列")
+                }
+            }
+        ) {
+
+        }
+
+
+        TextButton(onClick = { bottomScope.launch { bottomState.show() } }) {
+            Text(text = "展示ModalBottomSheetDialog")
+        }
+
+
+        BackHandler(
+            enabled = bottomState.currentValue == ModalBottomSheetValue.Expanded ||
+                    bottomState.currentValue == ModalBottomSheetValue.HalfExpanded,
+            onBack = {
+                bottomScope.launch { bottomState.hide() }
+            }
+        )
 
     }
 
