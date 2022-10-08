@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
@@ -34,9 +35,11 @@ fun MessageScreen() {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
 
-    Column(modifier = Modifier
-        .padding(16.dp)
-        .verticalScroll(scrollState)) {
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .verticalScroll(scrollState)
+    ) {
 
         Text(text = "动画", fontWeight = FontWeight.Bold, fontSize = 18.sp)
 
@@ -167,6 +170,14 @@ fun MessageScreen() {
 //        旋转，缩放，box
         Spacer(modifier = Modifier.height(12.dp))
         MyTouchBox()
+
+//        滚动相关
+        MyHorizontalScrollView()
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_4)))
+
+//        LazyColumn
+        MyLazyColumnView()
+
 
     }
 
