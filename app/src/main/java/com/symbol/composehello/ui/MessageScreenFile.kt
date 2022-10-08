@@ -4,10 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -35,8 +32,11 @@ import com.symbol.composehello.R
 @Composable
 fun MessageScreen() {
     val context = LocalContext.current
+    val scrollState = rememberScrollState()
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier
+        .padding(16.dp)
+        .verticalScroll(scrollState)) {
 
         Text(text = "动画", fontWeight = FontWeight.Bold, fontSize = 18.sp)
 
@@ -104,9 +104,8 @@ fun MessageScreen() {
         ) {
             Text(text = "Box")
         }
-
+//双击
         Spacer(modifier = Modifier.height(12.dp))
-
         Box(
             modifier = Modifier
                 .size(60.dp)
@@ -142,7 +141,7 @@ fun MessageScreen() {
         var ofy by remember { mutableStateOf(0.dp) }
 
 
-
+//    多点触控监听
         Box(
             modifier = Modifier
                 .size(200.dp)
@@ -165,6 +164,9 @@ fun MessageScreen() {
             )
         }
 
+//        旋转，缩放，box
+        Spacer(modifier = Modifier.height(12.dp))
+        MyTouchBox()
 
     }
 
