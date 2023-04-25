@@ -10,7 +10,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.namespace == "com.android") {
-                useModule("com.android.tools.build:gradle:${requested.version}")
+                useModule("com.android.tools.build:gradle:8.0.0")
             }
         }
     }
@@ -20,6 +20,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
     }
     versionCatalogs {
         create("libs") {

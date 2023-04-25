@@ -17,7 +17,7 @@ import com.symbol.widget.BottomNavType
 /**
  * 主页
  */
-class MainActivity : ComponentActivity() {
+  class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

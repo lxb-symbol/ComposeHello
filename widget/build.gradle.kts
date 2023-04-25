@@ -5,6 +5,7 @@ plugins {
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace ="com.symbol.widget"
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
@@ -14,7 +15,7 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
