@@ -10,7 +10,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.symbol.composehello.ui.*
+import com.symbol.composehello.ui.HomeScreen
+import com.symbol.composehello.ui.MainBottomNav
+import com.symbol.composehello.ui.MessageScreen
+import com.symbol.composehello.ui.MineScreen
+import com.symbol.composehello.ui.NewsScreen
 import com.symbol.composehello.ui.theme.ComposeHelloTheme
 import com.symbol.widget.BottomNavType
 
@@ -20,6 +24,7 @@ import com.symbol.widget.BottomNavType
   class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             MainHomeScreen()
         }
