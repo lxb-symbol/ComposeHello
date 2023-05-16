@@ -157,7 +157,6 @@ fun MessageScreen() {
                 }
                 .pointerInput(Unit) {
                     detectDragGestures { change, dragAmount ->
-
                         change.consume()
                         ofx += dragAmount.x.toDp()
                         ofy += dragAmount.y.toDp()

@@ -1,5 +1,3 @@
-//enableFeaturePreview("VERSION_CATALOGS")
-//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -30,6 +28,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComposeHello"
 include(":app")
-include(":mylibrary")
 include(":widget")
 

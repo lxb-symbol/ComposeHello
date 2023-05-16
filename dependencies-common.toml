@@ -10,10 +10,10 @@ versionCode="1"
 versionName="1.0.0"
 applicationId="com.symbol.composehello"
 # official library
-kotlin = "1.6.0"
-kotlin-coroutines = "1.6.0-RC2"
+kotlin = "1.8.21"
+kotlin-coroutines = "3.2.3"
 ktor = "1.6.7"
-android-plugin = "8.0.0"
+android-plugin = "8.0.1"
 androidx-appcompat = "1.4.0"
 lifecycle = "2.3.1"
 compose = "1.2.1"
@@ -58,7 +58,7 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 #kotlin
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }

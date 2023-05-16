@@ -24,7 +24,6 @@ import com.symbol.widget.BottomNavType
   class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             MainHomeScreen()
         }
@@ -61,6 +60,9 @@ fun ContentArea(type: BottomNavType, modifier: Modifier) {
                 BottomNavType.TYPE_MESSAGE_TYPE -> MessageScreen()
                 BottomNavType.TYPE_NEWS -> NewsScreen()
                 BottomNavType.TYPE_MINE -> MineScreen()
+                else -> {
+
+                }
             }
         }
     }
